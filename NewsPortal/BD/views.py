@@ -12,9 +12,9 @@ class NewsView():
     @classmethod
     def ShowNews(cls, request):
         posts = Post.objects.all().order_by('-date')
-        avtor = Author.objects.all()
+        author = Author.objects.all()
         return render(request, 'BD/AllNews.html', {'posts': posts,
-                                                   'avtor': avtor,
+                                                   'author': author,
                                                    'title': 'Новости'
                                                    })
 

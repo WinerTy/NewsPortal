@@ -34,3 +34,5 @@ I
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+T
+$NewsPortal/static/css/PostDetail.css,f\2\f266f087e966a9996b9caf54918e5efb4e2e9d20

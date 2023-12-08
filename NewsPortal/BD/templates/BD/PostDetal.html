@@ -4,18 +4,25 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/PostDetal.css' %}"> <!-- СДЕЛАТЬ ОФОРМЛЕНИЕ-->
-    <div class="PostContent">
-        <h1>{{ post.title|censore }}</h1>
-        <h2>{{ post.text|censore }}</h2>
-    </div>
+<link rel="stylesheet" href="{% static 'css/PostDetail.css' %}">
+    <div class="post-content">
 
-        <div class="post-info">
-            <div class="cell author-cell">
-                <h3>{{ avtor }}</h3>
+        <div class="post-block">
+            <div>
+                <h1>{{ post.title|censore }}</h1>
             </div>
-            <div class="cell date-cell">
-                <h4>{{ post.date|date:"d/m/Y" }}</h4>
+            <div>
+                <p>{{ post.text|censore }}</p>
+            </div>
+
+            <div class="post-info">
+            <div>
+                <h3><span>Автор: </span>{{ post.author.user.username }}</h3>
+            </div>
+            <div>
+                <h4><span>Дата: </span>{{ post.date|date:"d/m/Y" }}</h4>
             </div>
         </div>
+        </div>
+    </div>
 {% endblock %}
