@@ -5,24 +5,16 @@
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/PostDetail.css' %}">
-    <div class="post-content">
+<div class="col-md-12">
 
-        <div class="post-block">
-            <div>
-                <h1>{{ post.title|censore }}</h1>
-            </div>
-            <div>
-                <p>{{ post.text|censore }}</p>
-            </div>
-
-            <div class="post-info">
-            <div>
-                <h3><span>Автор: </span>{{ post.author.user.username }}</h3>
-            </div>
-            <div>
-                <h4><span>Дата: </span>{{ post.date|date:"d/m/Y" }}</h4>
-            </div>
-        </div>
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">{{ post.type }}</strong>
+            <h3 class="mb-0">{{ post.title|censore }}</h3>
+            <div class="mb-1 text-muted">Дата публикации: {{ post.date|date:"d E" }}</div>
+            <p class="card-text mb-auto">{{ post.text }}</p>
+            <p class="card-author mb-auto">Автор: {{ post.author }}</p>
         </div>
     </div>
+</div>
 {% endblock %}

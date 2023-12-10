@@ -2,30 +2,35 @@
 {% load Filters %} <!-- Подгрузка Фильтра, Css и наследуемый шаблон-->
 {% load static %}
 
-{% block title %}
-    Новости
-{% endblock %}
-
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/Main.css' %}">
-<h1>Все новости: {{ posts|length }}</h1>
-<div class="post-grid">
-    {% if posts %}
-        {% for post in posts %}
-            <div class="post-card">
-                <p title="{{ post.title }}"><a href="{% url 'Post Details' post.id %}">{{ post.title|censore }}</a></p>
-                <p title="{{ post.text }}"> {{ post.text|slice:":20"|censore }} </p>
-                <h2>{{ post.date|date:"d/m/Y" }}</h2>
-            </div>
-        {% endfor %}
-            {% if posts.has_next %}
+    <main class="container">
+    <div class="row mb-2" style="gap: 10px">
+        {% if posts %}
+            {% for post in posts %}
+                    <div style="max-height: 600px; width: 49.6%;" class="col-md-6">
+                        <div style="height: 100%; width: 100%" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                {% if post.type.lower == 'news' %}
+                                    <strong class="d-inline-block mb-2 text-primary">{{ post.type }}</strong>
+                                {% else %}
+                                    <strong class="d-inline-block mb-2 text-success">{{ post.type }}</strong>
+                                {% endif %}
+                                <h3 class="mb-0">{{ post.title|truncatewords:7|censore }}</h3>
+                                <div class="mb-1 text-muted">{{ post.date|date:"d/m/Y" }}</div>
+                                <p class="card-text mb-auto">{{ post.text|truncatewords:7 }}</p>
+                                <p class="card-author mb-auto">{{ post.author }}</p>
+                                <a href="{% url 'Post Details' post.id %}" class="stretched-link">Подробнее...</a>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+                {% if posts.has_next %}
                 <div class="post-visibility">
-                    <a href="?page={{ posts.next_page_number}}">Еще</a>
+                    <a href="{% url 'All_news' %}?page={{ posts.next_page_number}}">Еще</a>
                 </div>
-            {% endif %}
-                        <!-- (СДЕЛАТЬ)Кнопка отвечающая за создание поста -->
-    {% else %}
-        <h2>Публикации отсутствуют</h2>
-    {% endif %}
-</div>
+                {% endif %}
+        {% endif %}
+    </div>
+
+    </main>
 {% endblock %}

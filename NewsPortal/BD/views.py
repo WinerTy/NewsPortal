@@ -14,7 +14,7 @@ class NewsView():
         posts = Post.objects.all().order_by('-date')
 
 
-        paginator = Paginator(posts, 9)
+        paginator = Paginator(posts, 10)
         page = request.GET.get('page')
 
         try:
@@ -29,7 +29,7 @@ class NewsView():
 
             posts = paginator.page(paginator.num_pages)
 
-        return render(request, 'BD/AllNews.html', {'posts': posts})
+        return render(request, 'BD/MainPage.html', {'posts': posts})
 
     # Вызывает шаблон для страницы с Полной инфорпацией о любом посте
     @classmethod
@@ -37,8 +37,13 @@ class NewsView():
         post = get_object_or_404(Post, pk=post_id)
         return render(request, 'BD/PostDetal.html', {'post': post})
 
-class information():
 
+    def ShowAllNews(request):
+        posts = Post.objects.all().order_by('-date')
+
+        return render(request, 'BD/AllNews.html', {'posts': posts})
+
+class information():
     def get_date(self):
         return Post.objects.get('created')
     def get_title(self):
@@ -49,7 +54,7 @@ class information():
 class filter(information,ListView):
     def get_queryset(self):
         queryset = Post.objects.filter(
-            Q(date__in=self.request.GET.getlist("date"))|
+            Q(date__in=self.request.GET.getlist("-date"))|
             Q(title__in=self.request.GET.getlist("title"))|
             Q(author__in=self.request.GET.getlist("author"))
         )
