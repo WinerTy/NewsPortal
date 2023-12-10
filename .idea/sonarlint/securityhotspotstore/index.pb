@@ -25,8 +25,6 @@ P
  NewsPortal/static/css/styles.css,5\3\5323bda88de95f1bd01addbd27c9778609ba527d
 Y
 )NewsPortal/BD/templates/BD/PostDetal.html,6\4\6426874d4c05a88fe673af4278594e2b21b7619f
-S
-#NewsPortal/static/css/PostDetal.css,e\e\ee8f490f8b2b7d7926e51b03e8dc8b9eb28565de
 U
 %NewsPortal/BD/templatetags/Filters.py,d\f\dfbfde56622f856b5b92d132d4df08cdc9dc090c
 I
@@ -36,3 +34,11 @@ I
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 T
 $NewsPortal/static/css/PostDetail.css,f\2\f266f087e966a9996b9caf54918e5efb4e2e9d20
+R
+"NewsPortal/static/css/mainpage.css,f\6\f698339eb861056ef83b9df393f653e7fc10c6bc
+F
+NewsPortal/BD/forms.py,b\8\b8cd9298cfefa39e6ac3735f59d4469f1cc83c5f
+T
+$NewsPortal/BD/templates/BD/Side.html,4\9\49ae26e835cab5d806d987719cc1ba18c1cbabb6
+w
+G.idea/sonarlint/issuestore/9/0/90c989737c7651e64b92f927cee8cc066cd3f90a,8\8\88724e21e96a420171fb4bf88c7b7a0d85731cd1

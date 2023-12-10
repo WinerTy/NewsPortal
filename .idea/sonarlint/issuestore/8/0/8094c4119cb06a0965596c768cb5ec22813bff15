@@ -1,4 +1,4 @@
 
-mpython:S1542"NRename function "MainPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(û¹ÚÔ8½ÃÙÍÄ1
-opython:S100"LRename method "ShowNews" to match the regular expression ^[a-z_][a-z0-9_]*$.(ƒüú›şÿÿÿÿ8¾ÃÙÍÄ1
-kpython:S100"NRename method "Post_detal" to match the regular expression ^[a-z_][a-z0-9_]*$.(ü£éi8ÀÃÙÍÄ1
+mpython:S1542"NRename function "MainPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(û¹ÚÔ8ƒ±£Å1
+opython:S100"LRename method "ShowNews" to match the regular expression ^[a-z_][a-z0-9_]*$.(ƒüú›şÿÿÿÿ8…±£Å1
+kpython:S100$"NRename method "Post_detal" to match the regular expression ^[a-z_][a-z0-9_]*$.(ü£éi8†±£Å1

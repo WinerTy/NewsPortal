@@ -41,3 +41,7 @@ p {
     font-family: "Georgia",serif;
     font-size: 34px ;
 }
+
+.post-visibility {
+    align-items: center;
+}
