@@ -42,3 +42,7 @@ T
 $NewsPortal/BD/templates/BD/Side.html,4\9\49ae26e835cab5d806d987719cc1ba18c1cbabb6
 w
 G.idea/sonarlint/issuestore/9/0/90c989737c7651e64b92f927cee8cc066cd3f90a,8\8\88724e21e96a420171fb4bf88c7b7a0d85731cd1
+Y
+)NewsPortal/BD/templates/BD/sort_post.html,b\7\b71f3d5e5a79f7d0a68796f9a558ce7eb0d4cca7
+Q
+!NewsPortal/BD/templates/BD/1.html,6\1\610786a88126f4c6e63ee79a7d592d787341627d

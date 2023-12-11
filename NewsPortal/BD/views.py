@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
-from django.db.models import Q
+
 
 def MainPage(request):
     return render(request, 'BD/MainPage.html', {'title': 'Главная страница'})
@@ -14,7 +13,7 @@ class NewsView():
         posts = Post.objects.all().order_by('-date')
 
 
-        paginator = Paginator(posts, 10)
+        paginator = Paginator(posts, 6)
         page = request.GET.get('page')
 
         try:
@@ -37,25 +36,20 @@ class NewsView():
         post = get_object_or_404(Post, pk=post_id)
         return render(request, 'BD/PostDetal.html', {'post': post})
 
-
     def ShowAllNews(request):
         posts = Post.objects.all().order_by('-date')
 
         return render(request, 'BD/AllNews.html', {'posts': posts})
 
-class information():
-    def get_date(self):
-        return Post.objects.get('created')
-    def get_title(self):
-        return Post.objects.get('title')
-    def get_author(self):
-        return Post.objects.get('author')
-
-class filter(information,ListView):
-    def get_queryset(self):
-        queryset = Post.objects.filter(
-            Q(date__in=self.request.GET.getlist("-date"))|
-            Q(title__in=self.request.GET.getlist("title"))|
-            Q(author__in=self.request.GET.getlist("author"))
-        )
-        return queryset
+class Sorting():
+    def knopka(request):
+        sort_by = request.GET.get('sort', 'author')
+        if sort_by == 'author':
+            post = Post.objects.all().order_by('title')
+        elif sort_by == 'title':
+            post = Post.objects.all().order_by('author')
+        elif sort_by == 'date':
+            post = Post.objects.all().order_by('date')
+        else:
+            post = Post.objects.value_list('author', 'title', 'date')
+        return render(request, 'BD/sort_post.html', {'post': post, 'sort_by': sort_by})
