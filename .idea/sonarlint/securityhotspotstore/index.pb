@@ -38,11 +38,11 @@ R
 "NewsPortal/static/css/mainpage.css,f\6\f698339eb861056ef83b9df393f653e7fc10c6bc
 F
 NewsPortal/BD/forms.py,b\8\b8cd9298cfefa39e6ac3735f59d4469f1cc83c5f
-T
-$NewsPortal/BD/templates/BD/Side.html,4\9\49ae26e835cab5d806d987719cc1ba18c1cbabb6
 w
 G.idea/sonarlint/issuestore/9/0/90c989737c7651e64b92f927cee8cc066cd3f90a,8\8\88724e21e96a420171fb4bf88c7b7a0d85731cd1
 Y
 )NewsPortal/BD/templates/BD/sort_post.html,b\7\b71f3d5e5a79f7d0a68796f9a558ce7eb0d4cca7
-Q
-!NewsPortal/BD/templates/BD/1.html,6\1\610786a88126f4c6e63ee79a7d592d787341627d
+N
+NewsPortal/static/css/blog.css,3\a\3a2364b673082295577b73d290a10c8d8a20e275
+R
+"NewsPortal/static/css/blog.rtl.css,2\7\27995acce41e4b7b7f982d9b7d452a99d999bf40

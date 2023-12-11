@@ -3,28 +3,13 @@
 {% load static %}
 
 {% block content %}
-<div class="button">
-    <button class="toggle-button">Кнопка 1</button>
-    <button class="toggle-button">Кнопка 2</button>
-    <button class="toggle-button">Кнопка 3</button>
-</div>
-<script>
-let buttons = document.querySelectorAll('.toggle-button');
-
-buttons.forEach(button => {
-  button.addEventListener('click', function() {
-    if (this.classList.contains('active')) {
-      this.classList.remove('active');
-      this.classList.add('inactive');
-      this.textContent = 'Выключен';
-    } else {
-      this.classList.remove('inactive');
-      this.classList.add('active');
-      this.textContent = 'Включен';
-    }
-  });
-});
-</script>
+<form method="GET" action="{% url 'Find' %}">
+    {% csrf_token %}
+    <input type="search" name="Find_author" placeholder="Поиск по автору">
+    <input type="search" name="Find_title" placeholder="Поиск по названию">
+    <input type="date" name="Find_date" placeholder="Позже даты">
+    <button type="submit">Поиск</button>
+</form>
     <main class="container">
     <div class="row mb-2" style="gap: 10px">
         {% if posts %}
@@ -47,9 +32,9 @@ buttons.forEach(button => {
                     </div>
             {% endfor %}
                 {% if posts.has_next %}
-                <div class="post-visibility">
-                    <a href="{% url 'All_news' %}?page={{ posts.next_page_number}}">Больше новостей</a>
-                </div>
+                    <div class="post-visibility">
+                        <a href="{% url 'All_news' %}?page={{ posts.next_page_number}}">Больше новостей</a>
+                    </div>
                 {% endif %}
         {% endif %}
     </div>

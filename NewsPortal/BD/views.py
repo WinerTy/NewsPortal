@@ -1,20 +1,25 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
 
 def MainPage(request):
     return render(request, 'BD/MainPage.html', {'title': 'Главная страница'})
 
-class NewsView():
-    # Передача Содержания автора даты и тд
-    @classmethod
-    def ShowNews(cls, request):
-        posts = Post.objects.all().order_by('-date')
+class NewsView(ListView):
+    model = Post
+    ordering = '-date'
+    template_name = 'BD/MainPage.html'
+    context_object_name = 'posts'
+    paginate_by = 8
+    def get_queryset(self):
+        return super().get_queryset().order_by('-date')
 
-
-        paginator = Paginator(posts, 6)
-        page = request.GET.get('page')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        posts = self.get_queryset()
+        paginator = Paginator(posts, self.paginate_by)
+        page = self.request.GET.get('page')
 
         try:
 
@@ -28,9 +33,13 @@ class NewsView():
 
             posts = paginator.page(paginator.num_pages)
 
-        return render(request, 'BD/MainPage.html', {'posts': posts})
+        context['posts'] = posts
+
+        return context
 
     # Вызывает шаблон для страницы с Полной инфорпацией о любом посте
+
+class PostInfo():
     @classmethod
     def Post_detal(cls, request, post_id):
         post = get_object_or_404(Post, pk=post_id)
@@ -38,18 +47,40 @@ class NewsView():
 
     def ShowAllNews(request):
         posts = Post.objects.all().order_by('-date')
+        paginator = Paginator(posts, 10)
+
+        page = request.GET.get('page')
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+
+            posts = paginator.page(1)
+        except EmptyPage:
+
+            posts = paginator.page(paginator.num_pages)
 
         return render(request, 'BD/AllNews.html', {'posts': posts})
 
-class Sorting():
-    def knopka(request):
-        sort_by = request.GET.get('sort', 'author')
-        if sort_by == 'author':
-            post = Post.objects.all().order_by('title')
-        elif sort_by == 'title':
-            post = Post.objects.all().order_by('author')
-        elif sort_by == 'date':
-            post = Post.objects.all().order_by('date')
+class Test1():
+    def test(request):
+        search_author = request.GET.get('Find_author', '')
+        search_title = request.GET.get('Find_title','')
+        search_date = request.GET.get('Find_date', '')
+        posts = Post.objects.all()
+
+
+        if search_author or search_title or search_date:
+            if search_author:
+                posts = posts.filter(author__user__username__icontains=search_author)
+
+            if search_title:
+                posts = posts.filter(title__contains=search_title)
+
+            if search_date:
+                posts = posts.filter(date__date=search_date)
+            else:
+                posts = Post.objects.all()
         else:
-            post = Post.objects.value_list('author', 'title', 'date')
-        return render(request, 'BD/sort_post.html', {'post': post, 'sort_by': sort_by})
+            posts = Post.objects.all()
+        return render(request, 'BD/sort_post.html', {'posts': posts})
+
