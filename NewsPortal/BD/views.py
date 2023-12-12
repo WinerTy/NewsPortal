@@ -60,27 +60,24 @@ class PostInfo():
 
             posts = paginator.page(paginator.num_pages)
 
-        return render(request, 'BD/AllNews.html', {'posts': posts})
+        return render(request, 'BD/AllNews.html', {'posts': posts}) # ПЕРЕПИСАТЬ ДЕТАЛЬНЫЙ ВЫВОД ПОСТА
 
 class FindPost():
     def Find(request):
         search_author = request.GET.get('Find_author', '')
-        search_title = request.GET.get('Find_title','')
+        search_title = request.GET.get('Find_title', '')
         search_date = request.GET.get('Find_date', '')
         posts = Post.objects.all()
 
-
         if search_author or search_title or search_date:
             if search_author:
-                posts = posts.filter(author__user__username__icontains=search_author) # НЕ РАБОТЕТ
+                posts = posts.filter(author__user__username__icontains=search_author)
 
             if search_title:
-                posts = posts.filter(title__contains=search_title)
+                posts = posts.filter(title__icontains=search_title)
 
             if search_date:
                 posts = posts.filter(date__date=search_date)
-            else:
-                posts = Post.objects.all()
         else:
             posts = Post.objects.all()
         return render(request, 'BD/sort_post.html', {'posts': posts})
@@ -88,39 +85,27 @@ class FindPost():
 
 class CreatePost():
     def create(request):
-        errors = ''
         if request.method == 'POST':
             form = PostForm(request.POST)
-            print(form)
             if form.is_valid():
-                print(form)
                 form.save()
                 return redirect('All_news')
-            else:
-                errors = 'Неверно заполнена'
-                print(form)
 
         form = PostForm()
-        print(form)
+
 
         posts = {
             'form': form,
-            'errors': errors,
         }
-        print(posts)
         return render(request, 'BD/create_post.html', posts)
-
 
 
 class UpdatePost(UpdateView):
     model = Post
-    form_class = PostForm
-    template_name = 'BD/update_post.html'
+    template_name = 'BD/create_post.html'
+    fields = ['title', 'text']
 
 class DeletePost(DeleteView):
     model = Post
-    form_class = PostForm
+    success_url = '/news'
     template_name = 'BD/delete_post.html'
-
-    def get_success_url(self):
-        return reverse('All_news', kwargs={''})
