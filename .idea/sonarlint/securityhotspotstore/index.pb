@@ -64,3 +64,13 @@ H
 ,NewsPortal/sign/templates/sign/register.html,6\5\652bd8bf7981dc306458a9d11af5c973f968dc21
 X
 (NewsPortal/BD/templates/BD/register.html,6\d\6d62b85d35884030f120215e211f71295438d61d
+H
+NewsPortal/sign/admin.py,1\b\1b458fef402dfe82ee102c7a580fcffb1ef5e8a8
+G
+NewsPortal/sign/apps.py,9\0\90f4c03875137c3162dcfe7061d960bfcbea87b8
+H
+NewsPortal/sign/tests.py,d\b\db3b0b453f549c051f84d4fa3e0630075bd013dc
+I
+NewsPortal/sign/models.py,2\b\2b435cbf821de7a6f96ef8c6ad6218bfb19d4bfa
+K
+NewsPortal/sign/__init__.py,e\1\e18f35fdfebe941de1e2eac217ad05be1b23ece0
