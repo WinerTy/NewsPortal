@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from .models import Post
@@ -109,3 +110,7 @@ class DeletePost(DeleteView):
     model = Post
     success_url = '/news'
     template_name = 'BD/delete_post.html'
+
+
+class RegisterUser(CreateView):
+    pass

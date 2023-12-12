@@ -52,3 +52,15 @@ R
 +NewsPortal/BD/templates/BD/update_post.html,4\f\4f667848e98bd0b740dd24d742229873afbc069b
 [
 +NewsPortal/BD/templates/BD/delete_post.html,a\1\a153261cdb9fa1fcababdf96bf9439a32fd11484
+M
+NewsPortal/NewsPortal/wsgi.py,3\4\3436d6eadf05a0cc42d9d9dc39b0b58d8c68b2d3
+M
+NewsPortal/NewsPortal/asgi.py,4\e\4ec0a728565b21919a2b76097a285918f3d764fb
+G
+NewsPortal/sign/urls.py,5\d\5d033aa15c2ba5a3a206981cd5874ad5d151e25a
+H
+NewsPortal/sign/views.py,c\c\cc7b70efe0165a621b8cecd5acc1fc76feca77b7
+\
+,NewsPortal/sign/templates/sign/register.html,6\5\652bd8bf7981dc306458a9d11af5c973f968dc21
+X
+(NewsPortal/BD/templates/BD/register.html,6\d\6d62b85d35884030f120215e211f71295438d61d
