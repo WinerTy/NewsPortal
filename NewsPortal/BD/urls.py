@@ -1,11 +1,16 @@
 from django.urls import path
-from .views import NewsView , PostInfo, Test1
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import (
+    NewsView, PostInfo, FindPost, CreatePost, DeletePost, UpdatePost
+)
 
 urlpatterns = [
     path('main/', NewsView.as_view(), name='main'),
-    path('main/<int:post_id>/', PostInfo.Post_detal, name='Post Details'),
-    path('all_news/', PostInfo.ShowAllNews, name='All_news'),
-    path('search/', Test1.test, name='Find'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('news/', PostInfo.ShowAllNews, name='All_news'),
+    path('news/<int:post_id>/', PostInfo.Post_detal, name='Post Details'),
+    path('news/create/', CreatePost.create, name='create post'),
+    path('news/<int:pk>/update', UpdatePost.as_view(), name='update News'),
+    path('news/<int:pk>/delete', DeletePost.as_view(), name='delete News'),
+    path('search/', FindPost.Find, name='Find'),
+] + static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

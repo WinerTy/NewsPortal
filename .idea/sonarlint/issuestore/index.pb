@@ -46,3 +46,9 @@ N
 NewsPortal/static/css/blog.css,3\a\3a2364b673082295577b73d290a10c8d8a20e275
 R
 "NewsPortal/static/css/blog.rtl.css,2\7\27995acce41e4b7b7f982d9b7d452a99d999bf40
+[
++NewsPortal/BD/templates/BD/create_post.html,8\d\8d2c6f8598e8ddfa3ce401c1b3d685c6b0d2f6ba
+[
++NewsPortal/BD/templates/BD/update_post.html,4\f\4f667848e98bd0b740dd24d742229873afbc069b
+[
++NewsPortal/BD/templates/BD/delete_post.html,a\1\a153261cdb9fa1fcababdf96bf9439a32fd11484

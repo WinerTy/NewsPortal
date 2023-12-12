@@ -34,11 +34,9 @@
                         </div>
                     </div>
             {% endfor %}
-                {% if posts.has_next %}
                 <div class="post-visibility">
-                    <a href="{% url 'All_news' %}?page={{ posts.next_page_number}}">Больше новостей</a>
+                    <a href="{% url 'All_news' %}">Больше новостей</a>
                 </div>
-                {% endif %}
         {% endif %}
     </div>
     </main>
