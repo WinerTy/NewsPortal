@@ -3,6 +3,30 @@
 {% load static %}
 
 {% block content %}
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    input[type="search"], input[type="date"] {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button[type="submit"] {
+        padding: 10px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
 <form method="GET" action="{% url 'Find' %}">
     {% csrf_token %}
     <input type="search" name="Find_author" placeholder="Поиск по автору">
@@ -10,7 +34,7 @@
     <input type="date" name="Find_date" placeholder="Позже даты">
     <button type="submit">Поиск</button>
 </form>
-    <main class="container">
+    <main class="container"><br>
     <div class="row mb-2" style="gap: 10px">
         {% if posts %}
             {% for post in posts %}
