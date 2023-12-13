@@ -1,10 +1,9 @@
-
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, DeleteView, UpdateView
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import PostForm
-from django.urls import reverse
+
 def MainPage(request):
     return render(request, 'BD/MainPage.html', {'title': 'Главная страница'})
 
@@ -84,22 +83,21 @@ class FindPost():
         return render(request, 'BD/sort_post.html', {'posts': posts})
 
 
+
 class CreatePost():
     def create(request):
         if request.method == 'POST':
             form = PostForm(request.POST)
             if form.is_valid():
-                form.save()
+                form.save(request.user)
                 return redirect('All_news')
 
         form = PostForm()
-
 
         posts = {
             'form': form,
         }
         return render(request, 'BD/create_post.html', posts)
-
 
 class UpdatePost(UpdateView):
     model = Post
@@ -112,5 +110,5 @@ class DeletePost(DeleteView):
     template_name = 'BD/delete_post.html'
 
 
-class RegisterUser(CreateView):
+class GoAuthor():
     pass

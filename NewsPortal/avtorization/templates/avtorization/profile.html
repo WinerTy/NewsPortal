@@ -1,0 +1,27 @@
+{% extends 'BD/default.html' %}
+
+{% block content %}
+<head>
+  <title>Личный кабинет</title>
+  <style>
+    .avatar {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <h1>Личный кабинет {{ user.username }}</h1>
+  <div>
+    <label>Дата регистрации: {{ user.date_joined|date:'j F Y' }}</label>
+  </div>
+  <div>
+    <img class="avatar" src="{{ avatar_url }}" alt="Аватарка пользователя">
+  </div>
+
+  <button class="btn btn-sm btn-primaty w-100 ml-2" onclick="location.href= '{% url 'logout' %}?next=/profile'">Logout</button>
+
+</body>
+{% endblock %}

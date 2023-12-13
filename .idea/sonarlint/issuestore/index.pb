@@ -49,8 +49,6 @@ R
 [
 +NewsPortal/BD/templates/BD/create_post.html,8\d\8d2c6f8598e8ddfa3ce401c1b3d685c6b0d2f6ba
 [
-+NewsPortal/BD/templates/BD/update_post.html,4\f\4f667848e98bd0b740dd24d742229873afbc069b
-[
 +NewsPortal/BD/templates/BD/delete_post.html,a\1\a153261cdb9fa1fcababdf96bf9439a32fd11484
 M
 NewsPortal/NewsPortal/wsgi.py,3\4\3436d6eadf05a0cc42d9d9dc39b0b58d8c68b2d3
@@ -60,8 +58,6 @@ G
 NewsPortal/sign/urls.py,5\d\5d033aa15c2ba5a3a206981cd5874ad5d151e25a
 H
 NewsPortal/sign/views.py,c\c\cc7b70efe0165a621b8cecd5acc1fc76feca77b7
-\
-,NewsPortal/sign/templates/sign/register.html,6\5\652bd8bf7981dc306458a9d11af5c973f968dc21
 X
 (NewsPortal/BD/templates/BD/register.html,6\d\6d62b85d35884030f120215e211f71295438d61d
 H
@@ -74,3 +70,49 @@ I
 NewsPortal/sign/models.py,2\b\2b435cbf821de7a6f96ef8c6ad6218bfb19d4bfa
 K
 NewsPortal/sign/__init__.py,e\1\e18f35fdfebe941de1e2eac217ad05be1b23ece0
+[
++NewsPortal/BD/templates/Users/register.html,f\8\f819e38c7313621cd4be13d9c4a5440c35fb1975
+X
+(NewsPortal/BD/templates/Users/login.html,5\d\5db48466b82235b2112ee7d2d9601e85acc98852
+Z
+*NewsPortal/BD/templates/Users/profile.html,b\6\b61ed82171c669849bcc02f4c04022a4b060a9d9
+X
+(NewsPortal/BD/templates/Users/index.html,e\2\e2d61dbe952a61066720a80b36e2de6b7c57139d
+L
+NewsPortal/static/js/main.js,0\4\04ded79503a433ff4cd4bd5970a8a23f258f0efe
+_
+/NewsPortal/BD/templates/registration/login.html,5\0\50ffc960b6a8e8238532abfaeca69da45fb41c4e
+\
+,NewsPortal/sign/templates/sign/register.html,6\5\652bd8bf7981dc306458a9d11af5c973f968dc21
+[
++NewsPortal/sign/templates/sign/profile.html,8\b\8b961fd9ad7513d4c8b74d9e989e3bbcab97689a
+a
+1NewsPortal/sign/templates/registration/login.html,7\7\77c0f9b33434aa6e48430d902b8fc3b8736412df
+k
+;NewsPortal/avtorization/templates/avtorization/profile.html,c\3\c33342fad61b0161d8ea2762ddb826f3aeaceb00
+i
+9NewsPortal/avtorization/templates/registration/login.html,4\c\4c17cbf84416c84ab2f870d5b9da5cf1589c62ad
+l
+<NewsPortal/avtorization/templates/avtorization/register.html,1\1\117e5bcc1c3f3fbb15e6bb500ee6b5d7f19bdd02
+P
+ NewsPortal/avtorization/views.py,9\4\940394e5695b409456795cc5945b0b01ab64ae13
+O
+NewsPortal/avtorization/urls.py,a\1\a12eaa832b563a6ce418178826e0b05072640e9c
+P
+ NewsPortal/avtorization/forms.py,f\8\f87ee43fc8a812d769db9c6fe00b15f6455cb1c5
+b
+2venv/Lib/site-packages/django/contrib/auth/urls.py,2\d\2d5a52cfdcf1752be8d35353f158ed0fe0433e6f
+l
+<NewsPortal/avtorization/templates/registration/register.html,a\3\a3088ec67bba69d2de1cce328e8ec3ce9880e403
+O
+NewsPortal/avtorization/apps.py,1\2\1231c51f8932edaaa94e513c8bc60afa5caadf7c
+P
+ NewsPortal/avtorization/admin.py,6\3\63d39e03dbe1cbbcb464cb745ffef56348c4ce86
+Q
+!NewsPortal/avtorization/models.py,3\1\317162d6f1333313d9ef55cbf55852dd84c47c56
+P
+ NewsPortal/avtorization/tests.py,f\f\ff43d82e0ecbf5779290c5b17b80507f5dcd3ee7
+^
+.NewsPortal/avtorization/migrations/__init__.py,1\5\15c1e48a9ee886356d9ea60599dfe9ade4e9d55a
+S
+#NewsPortal/avtorization/__init__.py,e\5\e58107a60c4e40fd9c89a4ca958bc1f790c5b4f6

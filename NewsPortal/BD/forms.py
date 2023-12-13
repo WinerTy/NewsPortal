@@ -6,7 +6,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title','author','text', 'type']
+        fields = ['title','text', 'type']
 
         widgets = {
             "title": TextInput(attrs={
@@ -17,12 +17,15 @@ class PostForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Содержание поста',
             }),
-            "author": Select(attrs={
-                'class': 'form-control',
-                'placeholder': 'Имя автора'
-            }),
             "type": Select(attrs={
                 'class': 'form-control',
                 'placeholder': 'Тип поста',
             }),
         }
+
+    def save(self, user, commit=True):
+        post = super().save(commit=False)
+        post.author = user
+        if commit:
+            post.save()
+        return post

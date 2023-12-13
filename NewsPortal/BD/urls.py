@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import (
-    NewsView, PostInfo, FindPost, CreatePost, DeletePost, UpdatePost, RegisterUser
+    NewsView, PostInfo, FindPost, CreatePost, DeletePost, UpdatePost
 )
 
 urlpatterns = [
@@ -13,5 +13,8 @@ urlpatterns = [
     path('news/<int:pk>/update/', UpdatePost.as_view(), name='update post'),
     path('news/<int:pk>/delete', DeletePost.as_view(), name='delete post'),
     path('search/', FindPost.Find, name='Find'),
-    path('', include('sign.urls')),
+    path('', include('avtorization.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+# Добавить регистрацию/авторизацию и ЛИЧНЫЙ КАБИНЕТ
