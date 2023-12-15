@@ -50,9 +50,6 @@
     <div>
       <label>Дата регистрации: {{ user.date_joined|date:'j F Y' }}</label>
     </div>
-    <div>
-      <img class="avatar" src="{{ avatar_url }}" alt="Аватарка пользователя">
-    </div>
 
     <a class="logout-button" href="{% url 'account_logout' %}">Выйти из аккаунта</a>
   </div>

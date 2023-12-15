@@ -4,45 +4,82 @@
     {% trans "Signup" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Регистрация" %}
-    {% endelement %}
-    <p>
-        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-    </p>
-    {% url 'account_signup' as action_url %}
-        <form method="post">
-          {% csrf_token %}
-
-            <div class="form-outline mb-4">
-              {{ form.username }}
-              <label class="form-label" for="form1Example23">Имя пользователя</label>
+    <div class="all">
+        {% element h1 %}
+            <div>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                class="img-fluid" alt="Phone image">
             </div>
 
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              {{ form.email }}
-              <label class="form-label" for="form1Example23">Адресс эл.почты</label>
-            </div>
+        {% endelement %}
+        <div class="slovo">
+            <h1>Регистрация</h1>
+            <p>
+                {% blocktrans %}Уже есть зарегистрированный аккаунт? Можете <a href="{{ login_url }}">войти</a> в него.{% endblocktrans %}
+            </p>
+            {% url 'account_signup' as action_url %}
+                <form method="post">
+                  {% csrf_token %}
 
-            <!-- Password input 1 -->
-            <div class="form-outline mb-4">
-              {{ form.password1 }}
-              <label class="form-label" for="form1Example23">Пароль</label>
-            </div>
+                    <div class="form-all">
+                      {{ form.username }}
+                      <label class="form-label" for="form1Example23">Имя пользователя</label>
+                    </div>
 
-            <!-- Password input 2 -->
-            <div class="form-outline mb-4">
-              {{ form.password2 }}
-              <label class="form-label" for="form1Example23">Повторите пароль</label>
-            </div>
+                    <!-- Email input -->
+                    <div class="form-all">
+                      {{ form.email }}
+                      <label class="form-label" for="form1Example23">Адресс эл.почты</label>
+                    </div>
 
-            <!-- Submit button -->
-            <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary btn-lg">{% trans "Зарегестрироваться" %}</button>
-            </div>
-        </form>
+                    <!-- Password input 1 -->
+                    <div class="form-all">
+                      {{ form.password1 }}
+                      <label class="form-label" for="form1Example23">Пароль</label>
+                    </div>
 
+                    <!-- Password input 2 -->
+                    <div class="form-all">
+                      {{ form.password2 }}
+                      <label class="form-label" for="form1Example23">Повторите пароль</label>
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn btn-primary btn-lg">{% trans "Зарегестрироваться" %}</button>
+                    </div>
+                </form>
+        </div>
+    </div>
     {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-
+<style>
+        .all{
+            margin-top: 50px;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .form-all input{
+            outline: none;
+            background-color: #fff;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-all{
+            display:flex;
+            flex-direction: column;
+        }
+        .form-input {
+            display:flex;
+            flex-direction: column;
+            margin: 10px 0;
+        }
+        .slovo {
+            width: 50%;
+        }
+        .h1 {
+            font-size:30px;
+        }
+    </style>
 {% endblock content %}

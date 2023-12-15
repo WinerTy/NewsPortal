@@ -116,3 +116,11 @@ t
 DNewsPortal/BD/migrations/0003_alter_author_user_alter_post_author.py,c\3\c38e827e3542160a6d517f6a1666c1f4ca764292
 D
 NewsPortal/manage.py,0\4\0457433d32d06347de2824956f9e5661a5d7bfbb
+P
+ NewsPortal/static/css/logout.css,9\4\9458b4e195dcec2a29a53c778600b899ec105ab0
+j
+:NewsPortal/avtorization/templates/socialaccount/login.html,3\9\3916822167d3e88c7700e05b2dc58d20a2332a23
+r
+BNewsPortal/avtorization/templates/socialaccount/provider_list.html,d\f\dfef2f08f75cb5e066c764b2cc9b32be2e2a4870
+p
+@NewsPortal/avtorization/templates/socialaccount/login_extra.html,7\0\706e3f65cf9a56b3b07aaa20277bc8a3703f30ce
