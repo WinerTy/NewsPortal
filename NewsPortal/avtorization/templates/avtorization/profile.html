@@ -46,7 +46,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Личный кабинет {{ user.username }}</h1>
+    <h1>Личный кабинет: {{ user.username }}</h1>
     <div>
       <label>Дата регистрации: {{ user.date_joined|date:'j F Y' }}</label>
     </div>
@@ -54,7 +54,7 @@
       <img class="avatar" src="{{ avatar_url }}" alt="Аватарка пользователя">
     </div>
 
-    <a class="logout-button" href="{% url 'logout' %}?next=/profile">Logout</a>
+    <a class="logout-button" href="{% url 'account_logout' %}">Выйти из аккаунта</a>
   </div>
 </body>
 {% endblock %}
