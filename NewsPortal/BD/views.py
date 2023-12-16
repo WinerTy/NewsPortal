@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DeleteView, UpdateView
 from .models import Post
@@ -81,7 +82,6 @@ class FindPost():
         else:
             posts = Post.objects.all()
         return render(request, 'BD/sort_post.html', {'posts': posts})
-
 
 
 class CreatePost():

@@ -86,12 +86,15 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'NewsPortal.wsgi.application'
 
 LOGIN_REDIRECT_URL = '/profile/'
 
 LOGOUT_REDIRECT_URL = '/main/'
 
+ACCOUNT_FORMS = {'signup': 'avtorization.models.BaseSignForm'}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

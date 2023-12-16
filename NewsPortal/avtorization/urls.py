@@ -1,8 +1,8 @@
 from . import views
 from django.urls import path, include
 from allauth.account import views as allauth_views
-from .views import ProfileView
 
+from .views import add_to_group
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
@@ -11,5 +11,6 @@ urlpatterns = [
     path('signup/', allauth_views.signup, name='account_signup'),
     path('password/reset/', allauth_views.password_reset, name='account_reset_password'),
     path('password/change/', allauth_views.password_change, name='account_change_password'),
-    path('profile/', ProfileView.profile, name='profile'),
+    path('profile/', views.profile, name='profile'),
+    path('role/', add_to_group, name='give_role'),
 ]

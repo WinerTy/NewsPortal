@@ -50,7 +50,15 @@
     <div>
       <label>Дата регистрации: {{ user.date_joined|date:'j F Y' }}</label>
     </div>
+    <form method="POST" action="">
+        {% csrf_token %}
+          {% if 'author' in user.groups.all|join:", " %}
+            <h3>Вы уже являетесь автором</h3>
+          {% else %}
+            <button class="btn btn-success"><a href="{% url 'give_role' %}"> Стать автором </a></button>
+          {% endif %}
 
+    </form>
     <a class="logout-button" href="{% url 'account_logout' %}">Выйти из аккаунта</a>
   </div>
 </body>
