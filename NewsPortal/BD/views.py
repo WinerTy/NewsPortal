@@ -63,7 +63,9 @@ class PostInfo():
 
         return render(request, 'BD/AllNews.html', {'posts': posts}) # ПЕРЕПИСАТЬ ДЕТАЛЬНЫЙ ВЫВОД ПОСТА
 
+
 class FindPost():
+
     def Find(request):
         search_author = request.GET.get('Find_author', '')
         search_title = request.GET.get('Find_title', '')
@@ -72,7 +74,7 @@ class FindPost():
 
         if search_author or search_title or search_date:
             if search_author:
-                posts = posts.filter(author__user__username__icontains=search_author)
+                posts = posts.filter(author__username__icontains=search_author)
 
             if search_title:
                 posts = posts.filter(title__icontains=search_title)
@@ -108,7 +110,3 @@ class DeletePost(DeleteView):
     model = Post
     success_url = '/news'
     template_name = 'BD/delete_post.html'
-
-
-class GoAuthor():
-    pass
