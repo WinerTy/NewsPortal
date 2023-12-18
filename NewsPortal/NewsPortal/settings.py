@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'MailPost',
     'BD',
     'django_filters',
     'avtorization',
@@ -71,7 +72,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'sign', 'templates'),
-                 os.path.join(BASE_DIR, 'avtorization', 'templates')
+                 os.path.join(BASE_DIR, 'avtorization', 'templates'),
+                 os.path.join(BASE_DIR, 'MailPost', 'templates')
 
                  ],
         'APP_DIRS': True,
@@ -88,13 +90,7 @@ TEMPLATES = [
 
 
 
-WSGI_APPLICATION = 'NewsPortal.wsgi.application'
 
-LOGIN_REDIRECT_URL = '/profile/'
-
-LOGOUT_REDIRECT_URL = '/main/'
-
-ACCOUNT_FORMS = {'signup': 'avtorization.models.BaseSignForm'}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -190,4 +186,28 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+
 SITE_ID = 1
+
+# REGISTRATION
+
+WSGI_APPLICATION = 'NewsPortal.wsgi.application'
+
+LOGIN_REDIRECT_URL = '/profile/'
+
+LOGOUT_REDIRECT_URL = '/main/'
+
+ACCOUNT_FORMS = {'signup': 'avtorization.models.BaseSignForm'}
+
+
+
+# EMAIL
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'TestNewsPortal1@yandex.ru'
+EMAIL_HOST_PASSWORD = 'nfneloxtkrpshcra'
+
+DEFAULT_FROM_EMAIL = 'TestNewsPortal1@yandex.ru'
