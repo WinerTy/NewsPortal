@@ -127,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -199,8 +199,9 @@ LOGOUT_REDIRECT_URL = '/main/'
 
 ACCOUNT_FORMS = {'signup': 'avtorization.models.BaseSignForm'}
 
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
-
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 # EMAIL
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -211,3 +212,5 @@ EMAIL_HOST_USER = 'TestNewsPortal1@yandex.ru'
 EMAIL_HOST_PASSWORD = 'nfneloxtkrpshcra'
 
 DEFAULT_FROM_EMAIL = 'TestNewsPortal1@yandex.ru'
+
+

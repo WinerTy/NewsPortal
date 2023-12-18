@@ -1,4 +1,6 @@
-from django.contrib.auth.decorators import permission_required
+from datetime import timedelta
+from django.utils import timezone
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DeleteView, UpdateView
 from .models import Post
@@ -61,7 +63,7 @@ class PostInfo():
 
             posts = paginator.page(paginator.num_pages)
 
-        return render(request, 'BD/AllNews.html', {'posts': posts}) # ПЕРЕПИСАТЬ ДЕТАЛЬНЫЙ ВЫВОД ПОСТА
+        return render(request, 'BD/AllNews.html', {'posts': posts})
 
 
 class FindPost():

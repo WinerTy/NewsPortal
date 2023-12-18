@@ -19,8 +19,20 @@
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                <a class="link-secondary" href="{% url 'rolenews' %}">Новости</a>
-                <a class="link-secondary" href="{% url 'rolearticle' %}">Статьи</a>
+                {% if 'news' in user.groups.all|join:", " and 'article' in user.groups.all|join:", " %}
+                        <a href="{% url 'remroles'%}">Отписаться от всего</a>
+                {% else %}
+                     {% if 'news' in user.groups.all|join:", " %}
+                        <a class="link-secondary" href="{% url 'remrolenews'%}">Отписаться</a>
+                     {% else %}
+                        <a class="link-secondary" href="{% url 'rolenews' %}">Новости</a>
+                     {% endif %}
+                     {% if 'article' in user.groups.all|join:", " %}
+                        <a class="link-secondary" href="{% url 'removerolearticle'%}">Отписаться</a>
+                     {% else %}
+                        <a class="link-secondary" href="{% url 'rolearticle' %}">Статьи</a>
+                     {% endif %}
+                {% endif %}
             </div>
             <div class="col-4 text-center">
                 <a class="blog-header-logo text-dark" href="{% url 'main' %}">Главная страница</a>

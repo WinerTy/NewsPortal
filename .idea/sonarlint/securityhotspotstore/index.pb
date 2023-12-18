@@ -130,11 +130,21 @@ h
 8NewsPortal/MailPost/templates/MailPost/NewPostEmail.html,8\d\8d6a73e57ec9c24b68e2e5fc531060374539e572
 L
 NewsPortal/MailPost/admin.py,1\9\19322ef384237e4abadd7e4dcd70fe4dc52116c7
-Z
-*NewsPortal/MailPost/migrations/__init__.py,8\2\823d78fe403ae35f8f87faa960c815060f94edb4
 O
 NewsPortal/MailPost/__init__.py,8\5\85e7aa5dd4f9037ac458229fb11263b701cfe793
 M
 NewsPortal/MailPost/models.py,d\8\d8994189a4a7ae0ea43f983fac01128a4de5ff36
 K
 NewsPortal/MailPost/urls.py,8\6\861ffc6855b5084e70d816c9e1d7883854ee55e0
+U
+%NewsPortal/static/css/create_post.css,d\9\d9596da67a740ab8a6ff2e5dc9bdb6eecd69caeb
+c
+3NewsPortal/MailPost/templates/MailPost/default.html,9\d\9dc64f9ea9ea8198a421e921900800b64faadfe9
+Ö
+UNewsPortal/BD/migrations/0003_remove_subnews_category_remove_subnews_user_and_more.py,8\d\8d1367a6d26a70cf847042b64eb83df02a581abe
+Å
+QNewsPortal/BD/migrations/0002_alter_subarticle_category_alter_subnews_category.py,4\d\4d5ff8e914d8572fd9d9120786216384802ac3a8
+X
+(NewsPortal/BD/migrations/0001_initial.py,9\a\9ace419ec5419e7091756f87e96cd2d442ac5e2f
+T
+$NewsPortal/BD/migrations/__init__.py,e\3\e3cbf01bb240784af56f418ff56ce9b56dd31702

@@ -15,8 +15,4 @@ urlpatterns = [
     path('news/<int:pk>/delete', DeletePost.as_view(), name='delete post'),
     path('search/', FindPost.Find, name='Find'),
     path('', include('avtorization.urls')),
-    path('', include('MailPost.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-
-# Добавить регистрацию/авторизацию и ЛИЧНЫЙ КАБИНЕТ
