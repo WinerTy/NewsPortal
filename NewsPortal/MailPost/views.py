@@ -49,7 +49,7 @@ def notify_new_post(sender, instance, created, **kwargs):
             msg.attach_alternative(html_content, "text/html")
             msg.send()
 
-class Subscriber():
+class Subscriber():     # pylint: disable=                                      # ПЕРЕДЕЛАТЬ
     def get_role_news(request):
         if request.user.is_authenticated:
             group = Group.objects.get(name='news')
