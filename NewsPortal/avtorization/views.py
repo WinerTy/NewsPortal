@@ -29,3 +29,7 @@ def register_user(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'account/signup.html', {'form': form})
+
+
+
+

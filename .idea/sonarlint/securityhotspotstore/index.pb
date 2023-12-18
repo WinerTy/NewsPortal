@@ -136,3 +136,5 @@ O
 NewsPortal/MailPost/__init__.py,8\5\85e7aa5dd4f9037ac458229fb11263b701cfe793
 M
 NewsPortal/MailPost/models.py,d\8\d8994189a4a7ae0ea43f983fac01128a4de5ff36
+K
+NewsPortal/MailPost/urls.py,8\6\861ffc6855b5084e70d816c9e1d7883854ee55e0

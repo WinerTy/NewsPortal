@@ -27,12 +27,12 @@ class CustomUserCreationForm(UserCreationForm):
             )
 
             msg = EmailMultiAlternatives(
-                f'{user}, Спасибо за регистрацию',  # subject
+                f'{user}, Спасибо за регистрацию!',
                 '',
-                f'{DEFAULT_FROM_EMAIL}',  # from email
-                [f'{user.email}'],  # recipient list
+                f'{DEFAULT_FROM_EMAIL}',
+                [f'{user.email}'],
             )
-            msg.attach_alternative(html_content, "text/html")  # добавляем html
+            msg.attach_alternative(html_content, "text/html")
             msg.send()
             print('Письмо отправлено')
 
