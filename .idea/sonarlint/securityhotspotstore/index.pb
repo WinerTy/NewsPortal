@@ -148,8 +148,6 @@ X
 (NewsPortal/BD/migrations/0001_initial.py,9\a\9ace419ec5419e7091756f87e96cd2d442ac5e2f
 T
 $NewsPortal/BD/migrations/__init__.py,e\3\e3cbf01bb240784af56f418ff56ce9b56dd31702
-k
-;NewsPortal/NewsPortal/management/commands/runapscheduler.py,6\9\699f4e5f8146a3a4439e84e3d37e3172bb0e4233
 i
 9NewsPortal/MailPost/management/commands/runapscheduler.py,f\8\f8214209246a308b81f007d4f90a946d220d22ed
 c
