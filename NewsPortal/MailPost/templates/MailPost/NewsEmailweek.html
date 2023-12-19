@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'MailPost/default.html' %}
+{% load Filters %}
 
-</body>
-</html>
+{% block content %}
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 fst-italic">Активность NewsPortal за последнию неделю</h1>
+            <p class="lead my-3">Вы подписались на рассылку {{ post_list.type }}</p>
+            <p class="lead my-3">И мы отправили вам все последнии публикации этой недели на подписаную вами категорию</p>
+        </div>
+    </div>
+
+<div class="row mb-2" style="gap: 10px">
+    {% if post_list %}
+        {% for post in post_list %}
+                <div style="max-height: 600px; width: 49.6%;" class="col-md-6">
+                    <div style="height: 100%; width: 100%" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-primary">Категория {{ post.type }}</strong>
+                            <h3 class="mb-0">Название: {{ post.title|truncatewords:10|censore }}</h3>
+                            <div class="mb-1 text-muted">Дата: {{ post.date|date:"d F Y H:i:s" }}</div>
+                            <p class="card-text mb-auto">Содержание: {{ post.text|truncatewords:30 }}...</p>
+                            <p class="card-author mb-auto">Автор: {{ post.author }}</p>
+                            <a href="http://127.0.0.1:8000{{ post.url }}" class="stretched-link">Подробнее...</a>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    {% endif %}
+</div>
+</main>
+{% endblock %}

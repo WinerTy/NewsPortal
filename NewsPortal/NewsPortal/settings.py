@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
     'MailPost',
     'BD',
     'django_filters',
@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
+    'apscheduler',
+    'django_apscheduler',
 ]
 
 MIDDLEWARE = [
@@ -208,9 +210,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'TestNewsPortal1@yandex.ru'
-EMAIL_HOST_PASSWORD = 'nfneloxtkrpshcra'
+EMAIL_HOST_USER = 'NewsPortalDjango1@yandex.ru'
+EMAIL_HOST_PASSWORD = 'gifnwcizletrcgku'
 
-DEFAULT_FROM_EMAIL = 'TestNewsPortal1@yandex.ru'
+DEFAULT_FROM_EMAIL = 'NewsPortalDjango1@yandex.ru'
 
 
+
+APSCHEDULER_DATETIME_FORMAT = 'N j, Y, P'
+
+APSCHEDULER_RUN_NOW_TIMEOUT = 25

@@ -1,4 +1,5 @@
 from NewsPortal.settings import DEFAULT_FROM_EMAIL
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.models import Group, User
 from django.core.mail import EmailMultiAlternatives
@@ -48,35 +49,33 @@ def notify_new_post(sender, instance, created, **kwargs):
             )
             msg.attach_alternative(html_content, "text/html")
             msg.send()
+            print("Success")
 
-class Subscriber():     # pylint: disable=                                      # ПЕРЕДЕЛАТЬ
+
+@login_required
+class Subscriber():
     def get_role_news(request):
-        if request.user.is_authenticated:
-            group = Group.objects.get(name='news')
-            request.user.groups.add(group)
+        group = Group.objects.get(name='news')
+        request.user.groups.add(group)
         return redirect('/main')
 
     def get_role_article(request):
-        if request.user.is_authenticated:
-            group = Group.objects.get(name='article')
-            request.user.groups.add(group)
+        group = Group.objects.get(name='article')
+        request.user.groups.add(group)
         return redirect('/main')
 
     def remove_role_news(request):
-        if request.user.is_authenticated:
-            group = Group.objects.get(name='news')
-            request.user.groups.remove(group)
+        group = Group.objects.get(name='news')
+        request.user.groups.remove(group)
         return redirect('/main')
 
     def remove_role_article(request):
-        if request.user.is_authenticated:
-            group = Group.objects.get(name='article')
-            request.user.groups.remove(group)
+        group = Group.objects.get(name='article')
+        request.user.groups.remove(group)
         return redirect('/main')
 
     def remove_role_sub(request):
-        if request.user.is_authenticated:
-            groups = Group.objects.filter(name__in=['article', 'news'])
-            for group in groups:
-                request.user.groups.remove(group)
+        groups = Group.objects.filter(name__in=['article', 'news'])
+        for group in groups:
+            request.user.groups.remove(group)
         return redirect('/main')
