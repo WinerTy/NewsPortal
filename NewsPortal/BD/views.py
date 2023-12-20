@@ -93,12 +93,22 @@ class CreatePost():
         if request.method == 'POST':
             form = PostForm(request.POST)
             if form.is_valid():
+                # Получаем все посты, созданные текущим пользователем за последние 24 часа
+                recent_posts = Post.objects.filter(
+                    author=request.user,
+                    created_at__gte=timezone.now()-timedelta(days=1)
+                )
+                if recent_posts.count() >= 3:
+                    messages.error(request, 'Вы не можете публиковать больше 3х постов в день')
+                    return redirect('All_news')
                 form.save(request.user)
                 return redirect('All_news')
 
         form = PostForm()
 
+        errors = messages.error
         posts = {
+            'errors': errors,
             'form': form,
         }
         return render(request, 'BD/create_post.html', posts)
