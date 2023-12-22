@@ -1,11 +1,14 @@
-from datetime import timedelta
-from django.utils import timezone
-from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DeleteView, UpdateView
-from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView, DeleteView, UpdateView
+
+from .models import Post
 from .forms import PostForm
+
+
+
+
+
 
 def MainPage(request):
     return render(request, 'BD/MainPage.html', {'title': 'Главная страница'})
@@ -112,3 +115,6 @@ class DeletePost(DeleteView):
     model = Post
     success_url = '/news'
     template_name = 'BD/delete_post.html'
+
+
+
