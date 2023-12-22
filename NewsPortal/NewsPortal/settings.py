@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_celery_results',
+    'django_redis',
     
     'MailPost',
     'BD',
@@ -240,4 +241,17 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'MailPost.tasks.week_results',
         'schedule': crontab(minute=0, hour=8, day_of_week='monday'),  #Moscow Time
     },
+}
+
+
+# КЭШ
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://localhost:6379",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
 }

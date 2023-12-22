@@ -108,8 +108,6 @@ a
 1NewsPortal/MailPost/templates/MailPost/Email.html,0\b\0b3fbe2aae3c6d2f6012ce86ee8b10a008a44b94
 i
 9NewsPortal/MailPost/templates/MailPost/NewsEmailweek.html,8\1\81bc86aea2b28b3f99823d23a46b7d87080ccae9
-k
-;NewsPortal/MailPost/templates/MailPost/ArticlePostWeek.html,3\9\39518910013aeaf6b1d9afe9ce52c2fe5c612e04
 h
 8NewsPortal/MailPost/templates/MailPost/NewPostEmail.html,8\d\8d6a73e57ec9c24b68e2e5fc531060374539e572
 L
@@ -148,8 +146,6 @@ F
 NewsPortal/BD/tasks.py,f\4\f45dea959bbcb725f47c6fcea6cdb56a5415d635
 L
 NewsPortal/MailPost/tasks.py,f\a\fad1412f94675eff2cd5757c3c72a9d922353c12
-`
-0NewsPortal/MailPost/templates/MailPost/test.html,d\7\d740fb2cd1b829008a00c5ae8b443971f91f9f2c
 R
 "NewsPortal/celerybeat-schedule.dir,8\9\892ebe7b7fc674c92b19d07c7508b5df5bcac73a
 R

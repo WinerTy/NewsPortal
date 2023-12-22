@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
+
 from .forms import CustomUserCreationForm
 from BD.models import Author
 
