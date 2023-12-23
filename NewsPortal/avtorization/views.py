@@ -32,5 +32,3 @@ def register_user(request):
     return render(request, 'account/signup.html', {'form': form})
 
 
-
-

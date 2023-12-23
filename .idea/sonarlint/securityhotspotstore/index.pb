@@ -150,3 +150,7 @@ R
 "NewsPortal/celerybeat-schedule.dir,8\9\892ebe7b7fc674c92b19d07c7508b5df5bcac73a
 R
 "NewsPortal/celerybeat-schedule.bak,3\5\35c3f5d8b24c6bfe68566d60fc99ea8456165fbd
+P
+ NewsPortal/avtorization/tasks.py,0\d\0d3cf33ad09fa7d84858fb619f6e5eb1b53bd473
+R
+"NewsPortal/avtorization/signals.py,6\e\6e3b27aa93b2c91cc828044f440e31dd7a7d7de6
