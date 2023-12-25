@@ -1,65 +1,62 @@
 {% extends 'BD/default.html' %}
 
 {% block content %}
-<head>
-  <title>Личный кабинет</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-    }
-
-    .container {
-      width: 80%;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .avatar {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
-
-    .logout-button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      background-color: #007BFF;
-      color: #fff;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 20px;
-    }
-
-    .logout-button:hover {
-      background-color: #0056b3;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
+<div class="container">
+  <div class="info">
     <h1>Личный кабинет: {{ user.username }}</h1>
-    <div>
-      <label>Дата регистрации: {{ user.date_joined|date:'j F Y' }}</label>
-    </div>
-    <form method="POST" action="">
-        {% csrf_token %}
-          {% if 'author' in user.groups.all|join:", " %}
-            <h3>Вы уже являетесь автором</h3>
-          {% else %}
-            <button class="btn btn-success"><a href="{% url 'give_role' %}"> Стать автором </a></button>
-          {% endif %}
-
-    </form>
-    <a class="logout-button" href="{% url 'account_logout' %}">Выйти из аккаунта</a>
+    <label>Дата регистрации: {{ user.date_joined|date:'j F Y' }}</label>
   </div>
-</body>
+  <form method="POST" action="">
+      {% csrf_token %}
+        {% if 'author' in user.groups.all|join:", " %}
+          <h3>Вы уже являетесь автором</h3>
+        {% else %}
+          <button class="btn btn-success"><a href="{% url 'give_role' %}"> Стать автором </a></button>
+        {% endif %}
+  </form>
+  <div class="logout">
+    <a class="logout-button" href="{% url 'account_logout' %}">Выйти из аккаунта</a>
+    <p><a href="{% url 'account_reset_password' %}">Забыли пароль?</a> </p>
+  </div>
+</div>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .logout-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .logout-button:hover {
+    background-color: #0056b3;
+  }
+</style>
 {% endblock %}

@@ -7,8 +7,8 @@ from NewsPortal.settings import DEFAULT_FROM_EMAIL
 
 
 @shared_task
-def welcome_email_user(user_id):
-    user = User.objects.get(user_id=user_id)
+def welcome_email_user(id):
+    user = User.objects.get(id=id)
     data = {
         'username': user.username,
         'email': user.email

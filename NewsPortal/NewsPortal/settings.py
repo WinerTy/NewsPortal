@@ -45,10 +45,11 @@ INSTALLED_APPS = [
     
     'MailPost',
     'BD',
+    'weather',
     'django_filters',
     'avtorization',
 
-
+    'captcha',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -78,7 +79,8 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'sign', 'templates'),
                  os.path.join(BASE_DIR, 'avtorization', 'templates'),
-                 os.path.join(BASE_DIR, 'MailPost', 'templates')
+                 os.path.join(BASE_DIR, 'MailPost', 'templates'),
+                 os.path.join(BASE_DIR, 'weather', 'templates')
 
                  ],
         'APP_DIRS': True,
@@ -207,6 +209,8 @@ ACCOUNT_FORMS = {'signup': 'avtorization.models.BaseSignForm'}
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+
+
 # EMAIL
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

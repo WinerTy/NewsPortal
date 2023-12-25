@@ -1,0 +1,12 @@
+{% extends 'BD/default.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style_weather.css' %}">
+    <form method="get" action="{% url 'weather1' %}">
+        <input type="text" name="input_city" placeholder="Введите город">
+        <button type="submit">Узнать</button>
+    </form>
+<h1>Поле не может быть пустым!</h1>
+
+
+{% endblock %}

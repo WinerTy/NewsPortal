@@ -15,4 +15,5 @@ urlpatterns = [
     path('password/change/', allauth_views.password_change, name='account_change_password'),
     path('profile/', views.profile, name='profile'),
     path('role/', add_to_group, name='give_role'),
+    path('captcha/', include('captcha.urls'))
 ]

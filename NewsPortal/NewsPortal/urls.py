@@ -27,4 +27,5 @@ urlpatterns = [
     path('remroles/', include('MailPost.urls'), name='remroles'),
     path('admin/', admin.site.urls),
     path('', include('BD.urls')),
+    path('weather/', include('weather.urls'), name='weather')
 ]

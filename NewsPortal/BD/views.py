@@ -7,9 +7,6 @@ from .forms import PostForm
 
 
 
-
-
-
 def MainPage(request):
     return render(request, 'BD/MainPage.html', {'title': 'Главная страница'})
 
