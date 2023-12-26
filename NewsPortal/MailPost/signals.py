@@ -6,6 +6,6 @@ from .tasks import notify_new_post_task
 
 
 @receiver(post_save, sender=Post)
-def welcome_email(sender, instance, created, **kwargs):
+def create_post(sender, instance, created, **kwargs):
     if created:
         notify_new_post_task.delay(instance.id)

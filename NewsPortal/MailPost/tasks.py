@@ -12,13 +12,16 @@ from django.urls import reverse
 
 from NewsPortal.settings import DEFAULT_FROM_EMAIL
 
-from BD.models import Post
+from BD.models import Post, PostCategory
 from django.utils import timezone
+
 
 
 @shared_task
 def notify_new_post_task(post_id):
     post = Post.objects.get(id=post_id)
+    category = ', '.join(str(e) for e in PostCategory.objects.filter(post__id=post_id).values_list('category__name', flat=True))
+    print(category)
     groups = Group.objects.filter(name__in=['article', 'news'])
     for group in groups:
         users = group.user_set.all()  # Получаем всех пользователей в группе
@@ -34,6 +37,7 @@ def notify_new_post_task(post_id):
                 'type': f'{type}',
                 'data': f'{post.date}',
                 'text': f'{post.text}',
+                'category': f'{category}',
                 'url': reverse('Post Details', args=[post.id]),
             }
 

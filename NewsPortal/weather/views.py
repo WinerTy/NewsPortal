@@ -168,6 +168,10 @@ def get_weather(request):
             info = {
                 'error': 'Произошла ошибка, проверьте правильность написания города!',
             }
+        except requests.exceptions.ConnectTimeout:
+            info = {
+                'error': 'Не удалось обработать ваш запрос, попробуйте еще раз!'
+            }
         return render(request, 'weather/weather.html', {'info': info})
     else:
         return render(request, 'weather/weather_error.html',)

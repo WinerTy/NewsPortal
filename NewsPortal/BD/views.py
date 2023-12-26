@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, DeleteView, UpdateView
 
-from .models import Post
+from .models import Post, PostCategory, Category
 from .forms import PostForm
 
 
@@ -47,7 +47,8 @@ class PostInfo():
     @classmethod
     def Post_detal(cls, request, post_id):
         post = get_object_or_404(Post, pk=post_id)
-        return render(request, 'BD/PostDetal.html', {'post': post})
+        category = ', '.join(str(e) for e in PostCategory.objects.filter(post__id=post_id).values_list('category__name', flat=True))
+        return render(request, 'BD/PostDetal.html', {'post': post, 'category': category})
 
     def ShowAllNews(request):
         posts = Post.objects.all().order_by('-date')
@@ -67,7 +68,6 @@ class PostInfo():
 
 
 class FindPost():
-
     def Find(request):
         search_author = request.GET.get('Find_author', '')
         search_title = request.GET.get('Find_title', '')

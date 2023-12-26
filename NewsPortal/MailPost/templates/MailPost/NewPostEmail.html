@@ -13,10 +13,11 @@
                     {% else %}
                         <strong class="d-inline-block mb-2 text-success">Статья</strong>
                     {% endif %}
-                    <h3 class="mb-0">{{ subject.title|truncatewords:10|censore }}</h3>
-                    <div class="mb-1 text-muted">{{ subject.data|date:"d/m/Y" }}</div>
-                    <p class="card-text mb-auto">{{ subject.text|truncatewords:30|censore }}</p>
-                    <p class="card-author mb-auto">{{ subject.author }}</p>
+                    <h3 class="mb-0">Заголовок:{{ subject.title|truncatewords:10|censore }}</h3>
+                    <div class="mb-1 text-muted">Дата:{{ subject.data|date:"d/m/Y" }}</div>
+                    <p class="card-text mb-auto">Текс:{{ subject.text|truncatewords:30|censore }}</p>
+                    <p class="card-author mb-auto">Автор:{{ subject.author }}</p>
+                    <p class="card-author mb-auto">Категории:{{ subject.category }}</p>
                     <a href="http://127.0.0.1:8000{{ subject.url }}" class="stretched-link">Подробнее...</a>
                 </div>
             </div>
