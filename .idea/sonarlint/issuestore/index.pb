@@ -76,10 +76,6 @@ P
  NewsPortal/avtorization/tests.py,f\f\ff43d82e0ecbf5779290c5b17b80507f5dcd3ee7
 S
 #NewsPortal/avtorization/__init__.py,e\5\e58107a60c4e40fd9c89a4ca958bc1f790c5b4f6
-b
-2NewsPortal/NewsPortal/templates/account/login.html,4\0\408bf60c3af1f115ae92159217cfcf845bb2d590
-c
-3NewsPortal/NewsPortal/templates/account/signup.html,6\7\672571182de696eb7eac765d00ce26fd9cf29ec4
 d
 4NewsPortal/avtorization/templates/account/login.html,5\1\51a107203a27e3d402d5e18b0a14bc8bb4e7c83a
 e
@@ -174,24 +170,16 @@ Q
 ,NewsPortal/static/icon/partly-cloudy-day.svg,b\c\bc14b59482a501eac55bf7ff95e6f760982b376f
 W
 'NewsPortal/static/icon/overcast-day.svg,9\e\9e0b8f3ec8081fa41c33daac500d530e720f5d89
-X
-(NewsPortal/static/icon/overcast-rain.svg,6\4\644a1a4ffd2b9185d10e973e8fe709e645f88b54
-O
-NewsPortal/static/icon/rain.svg,2\8\28ced6f012c9f6cf75786a63999420191bccdf49
 R
 "NewsPortal/static/icon/fog-day.svg,e\7\e717ad4160b3268613667bbdbbb758d7e027333d
 [
 +NewsPortal/static/icon/extreme-day-snow.svg,e\f\ef673b58b8d2bb1c2e7ad11d5c5481dacbe2fc0a
-O
-NewsPortal/static/icon/mist.svg,7\6\768d6fa129b3f144bc43db3f2275db3645cd74c6
 a
 1NewsPortal/static/icon/partly-cloudy-day-rain.svg,e\a\ea4ad8dd4fbe533694dc46f6d8780f4bc8d0ef72
 d
 4NewsPortal/static/icon/partly-cloudy-day-drizzle.svg,f\4\f4c41ce27621cdfca0b4c07e99997a82b71d6b27
 a
 1NewsPortal/static/icon/partly-cloudy-day-hail.svg,8\f\8f1bbdbf07b1fe1976af1f9206ef7128f451487c
-a
-1NewsPortal/static/icon/partly-cloudy-day-haze.svg,b\9\b9c0a2bcb5d0b298bf97db2792b1211846320259
 \
 ,NewsPortal/static/icon/thunderstorms-day.svg,1\7\17d9006f8f9ace5f12b22525dcbba4784700a877
 \
@@ -200,24 +188,12 @@ a
 1NewsPortal/static/icon/partly-cloudy-day-snow.svg,2\c\2cc9058d62e9f31b690485007e77b612a4fb150d
 [
 +NewsPortal/static/icon/extreme-day-rain.svg,5\e\5eba5040fdeb5000b624752d5050509669eb54a5
-W
-'NewsPortal/static/icon/extreme-hail.svg,a\2\a25bd6b29d20b1312cd5332bb6d7ba6b3ad4f931
-W
-'NewsPortal/static/icon/extreme-haze.svg,3\0\30ed9724b8ae729de82446808f326b56088f8817
 ^
 .NewsPortal/static/icon/extreme-day-drizzle.svg,6\a\6a02ea1213a088a928fa5c1846bc28e89bb4c06f
 b
 2NewsPortal/static/icon/partly-cloudy-day-sleet.svg,7\3\739e84803c0ca8ee9f65c0618b7be0df5954b873
 X
 (NewsPortal/static/icon/not-available.svg,3\4\34a4c6c0aefc3a0fb2a1255652405e38b0c9ec36
-W
-'NewsPortal/static/icon/extreme-rain.svg,7\4\74672d2607c1ed8b9ab74bb2dad38561c5d13e8a
-X
-(NewsPortal/static/icon/overcast-hail.svg,c\0\c0e1924a091dbd089a551c9c7ea8f72f41e4c7d2
-N
-NewsPortal/static/icon/fog.svg,7\f\7f0c99cd26011492be9d0fe5a04048591427cb9c
-F
-NewsPortal/mydata.json,b\1\b171b00f3ed20a115f38ce6dacc5e189ba4d90cd
 e
 5NewsPortal/MailPost/management/commands/deletepost.py,6\f\6f5ac3e424cbd750a421763284d8f3d5521e40a6
 m
@@ -312,3 +288,5 @@ a
 .NewsPortal/static/icon/overcast-night-rain.svg,1\9\191c13bbf8bc818aed34c4c323c5cf82c1290902
 _
 /NewsPortal/static/icon/overcast-night-sleet.svg,4\8\4875ca2d71478e8931006c91e2d0b701abcf31dc
+?
+NewsPortal/.env,a\2\a2da3aef3be7204794c7b09b55ac240922859922
