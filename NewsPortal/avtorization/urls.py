@@ -1,8 +1,19 @@
-from django.urls import path
+from django.views.decorators.cache import cache_page
 
-from .views import profile_view, RegisterView
+from . import views
+from django.urls import path, include
+from allauth.account import views as allauth_views
+
+from .views import add_to_group
 
 urlpatterns = [
-    path('profile/', profile_view, name='profile'),
-    path('register/', RegisterView.as_view(), name='register'),
+    path('accounts/', include('allauth.urls')),
+    path('login/', allauth_views.login, name='account_login'),
+    path('logout/', allauth_views.logout, name='account_logout'),
+    path('signup/', views.register_user, name='account_signup'),
+    path('password/reset/', allauth_views.password_reset, name='account_reset_password'),
+    path('password/change/', allauth_views.password_change, name='account_change_password'),
+    path('profile/', views.profile, name='profile'),
+    path('role/', add_to_group, name='give_role'),
+    path('captcha/', include('captcha.urls'))
 ]

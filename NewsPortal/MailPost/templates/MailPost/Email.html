@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <h1>Здравствуй, {{ user.username }}!</h1>
+        <p>Благодарим за регистрацию на нашем сайте <a href="http://127.0.0.1:8000/main/">NewsPortal</a>.</p>
+       <!-- <p>Чтобы подтверить аккаунт перейдите по <a href="{{ activate_url }}">ссылке</a>.</p> -->
+      <nav>
+        <ul>
+          <li><a href="http://127.0.0.1:8000/main/">Главная страница</a></li>
+          <li><a href="http://127.0.0.1:8000/news/">Все новости</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <section>
+          <h2>Подписка на Новости</h2>
+          <p><a href="http://127.0.0.1:8000/rolenews/">Подписаться</a></p>
+
+        </section>
+        <section>
+          <h2>Подписка на Статьи</h2>
+          <p><a href="http://127.0.0.1:8000/rolearticle/">Подписаться</a></p>
+        </section>
+        <section>
+          <p>Это письмо сформировано автоматически и не нуждается в обратном ответе.</p>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

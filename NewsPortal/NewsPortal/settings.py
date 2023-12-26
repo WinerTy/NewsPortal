@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
+from celery.schedules import crontab
 from django.urls import reverse_lazy
+from dotenv import load_dotenv
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_5rddwypbd90u5bdh%#=+7j1956_)$&vlt9=#tc!6hupo0l(*^'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,10 +42,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django_celery_results',
+    'django_redis',
+    
+    'MailPost',
     'BD',
+    'weather',
     'django_filters',
     'avtorization',
+
+    'captcha',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+    'apscheduler',
+    'django_apscheduler',
 ]
 
 MIDDLEWARE = [
@@ -53,16 +69,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = 'NewsPortal.urls'
+
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'sign', 'templates'),
-                 os.path.join(BASE_DIR, 'avtorization', 'templates')
+                 os.path.join(BASE_DIR, 'avtorization', 'templates'),
+                 os.path.join(BASE_DIR, 'MailPost', 'templates'),
+                 os.path.join(BASE_DIR, 'weather', 'templates')
 
                  ],
         'APP_DIRS': True,
@@ -77,7 +97,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'NewsPortal.wsgi.application'
+
+
 
 
 # Database
@@ -113,9 +134,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -143,5 +164,101 @@ REST_FRAMEWORK = {
     )
 }
 
+AUTHENTICATION_BACKENDS = [
 
-LOGIN_REDIRECT_URL = reverse_lazy('avtorization:profile')
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+
+ACCOUNT_TEMPLATES = {
+    'login': 'avtorization/templates/registration/login.html',
+
+}
+
+SOCIALACCOUNT_FORMS = {
+    'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+    'signup': 'allauth.socialaccount.forms.SignupForm',
+}
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    }
+}
+
+
+SITE_ID = 1
+
+# REGISTRATION
+
+WSGI_APPLICATION = 'NewsPortal.wsgi.application'
+
+LOGIN_REDIRECT_URL = '/profile/'
+
+LOGOUT_REDIRECT_URL = '/main/'
+
+ACCOUNT_FORMS = {'signup': 'avtorization.models.BaseSignForm'}
+
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+
+
+# EMAIL
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = os.getenv('Email')
+EMAIL_HOST_PASSWORD = os.getenv('Email_password')
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+
+APSCHEDULER_DATETIME_FORMAT = 'N j, Y, P'
+
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
+
+
+# REDIS CELERY
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Moscow'
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+
+CELERY_BEAT_SCHEDULE = {
+    'week_results': {
+        'task': 'MailPost.tasks.week_results',
+        'schedule': crontab(minute=0, hour=8, day_of_week='monday'),  #Moscow Time
+    },
+}
+
+
+# КЭШ
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://localhost:6379",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+

@@ -1,0 +1,25 @@
+{% extends 'MailPost/default.html'%}
+{% load static %}
+{% load Filters %}
+
+{% block content %}
+
+<div style="max-height: 600px; width: 49.6%;" class="col-md-6">
+    <strong class="d-inline-block mb-2 text-success">На портале NewsPortal был опубликован новый пост!</strong>
+            <div style="height: 100%; width: 100%" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    {% if subject.type == 'news' %}
+                        <strong class="d-inline-block mb-2 text-primary">Новость</strong>
+                    {% else %}
+                        <strong class="d-inline-block mb-2 text-success">Статья</strong>
+                    {% endif %}
+                    <h3 class="mb-0">Заголовок:{{ subject.title|truncatewords:10|censore }}</h3>
+                    <div class="mb-1 text-muted">Дата:{{ subject.data|date:"d/m/Y" }}</div>
+                    <p class="card-text mb-auto">Текс:{{ subject.text|truncatewords:30|censore }}</p>
+                    <p class="card-author mb-auto">Автор:{{ subject.author }}</p>
+                    <p class="card-author mb-auto">Категории:{{ subject.category }}</p>
+                    <a href="http://127.0.0.1:8000{{ subject.url }}" class="stretched-link">Подробнее...</a>
+                </div>
+            </div>
+</div>
+{% endblock %}

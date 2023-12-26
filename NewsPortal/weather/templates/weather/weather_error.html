@@ -1,0 +1,13 @@
+{% extends 'BD/default.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style_weather.css' %}">
+    <form method="get" action="{% url 'weather1' %}">
+        <input type="text" name="input_city" placeholder="Введите город">
+        <button type="submit">Узнать</button>
+    </form>
+<div class="alert">
+    <h3>Введите город в котором вас интересует погода</h3>
+</div>
+
+{% endblock %}

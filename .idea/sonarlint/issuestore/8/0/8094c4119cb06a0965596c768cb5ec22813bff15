@@ -1,8 +1,9 @@
 
-mpython:S1542"NRename function "MainPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(û¹ÚÔ8ÔĞ˜Æ1
-^python:S57201"?Rename "request" to "self" or add the missing "self" parameter.(æÃ®8ÖĞ˜Æ1
-kpython:S100-"NRename method "Post_detal" to match the regular expression ^[a-z_][a-z0-9_]*$.(ü£éi8ØĞ˜Æ1
-mpython:S1001"ORename method "ShowAllNews" to match the regular expression ^[a-z_][a-z0-9_]*$.(æÃ®8ÙĞ˜Æ1
-cpython:S5720B"?Rename "request" to "self" or add the missing "self" parameter.(À€™üøÿÿÿÿ8ÛĞ˜Æ1
-kpython:S100B"HRename method "Find" to match the regular expression ^[a-z_][a-z0-9_]*$.(À€™üøÿÿÿÿ8ÜĞ˜Æ1
-^python:S5720X"?Rename "request" to "self" or add the missing "self" parameter.(›´•“8ŞĞ˜Æ1
+mpython:S1542
+"NRename function "MainPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(û¹ÚÔ8ûğ§¸Ê1
+^python:S57205"?Rename "request" to "self" or add the missing "self" parameter.(æÃ®8ığ§¸Ê1
+kpython:S1000"NRename method "Post_detal" to match the regular expression ^[a-z_][a-z0-9_]*$.(ü£éi8şğ§¸Ê1
+mpython:S1005"ORename method "ShowAllNews" to match the regular expression ^[a-z_][a-z0-9_]*$.(æÃ®8ÿğ§¸Ê1
+cpython:S5720G"?Rename "request" to "self" or add the missing "self" parameter.(À€™üøÿÿÿÿ8€ñ§¸Ê1
+kpython:S100G"HRename method "Find" to match the regular expression ^[a-z_][a-z0-9_]*$.(À€™üøÿÿÿÿ8ñ§¸Ê1
+^python:S5720\"?Rename "request" to "self" or add the missing "self" parameter.(›´•“8‚ñ§¸Ê1

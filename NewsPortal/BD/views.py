@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DeleteView, UpdateView
-from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView, DeleteView, UpdateView
+
+from .models import Post, PostCategory, Category
 from .forms import PostForm
+
+
 
 def MainPage(request):
     return render(request, 'BD/MainPage.html', {'title': 'Главная страница'})
@@ -44,7 +47,8 @@ class PostInfo():
     @classmethod
     def Post_detal(cls, request, post_id):
         post = get_object_or_404(Post, pk=post_id)
-        return render(request, 'BD/PostDetal.html', {'post': post})
+        category = ', '.join(str(e) for e in PostCategory.objects.filter(post__id=post_id).values_list('category__name', flat=True))
+        return render(request, 'BD/PostDetal.html', {'post': post, 'category': category})
 
     def ShowAllNews(request):
         posts = Post.objects.all().order_by('-date')
@@ -60,7 +64,8 @@ class PostInfo():
 
             posts = paginator.page(paginator.num_pages)
 
-        return render(request, 'BD/AllNews.html', {'posts': posts}) # ПЕРЕПИСАТЬ ДЕТАЛЬНЫЙ ВЫВОД ПОСТА
+        return render(request, 'BD/AllNews.html', {'posts': posts})
+
 
 class FindPost():
     def Find(request):
@@ -71,7 +76,7 @@ class FindPost():
 
         if search_author or search_title or search_date:
             if search_author:
-                posts = posts.filter(author__user__username__icontains=search_author)
+                posts = posts.filter(author__username__icontains=search_author)
 
             if search_title:
                 posts = posts.filter(title__icontains=search_title)
@@ -81,7 +86,6 @@ class FindPost():
         else:
             posts = Post.objects.all()
         return render(request, 'BD/sort_post.html', {'posts': posts})
-
 
 
 class CreatePost():
@@ -110,5 +114,4 @@ class DeletePost(DeleteView):
     template_name = 'BD/delete_post.html'
 
 
-class GoAuthor():
-    pass
+

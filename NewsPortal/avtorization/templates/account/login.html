@@ -1,0 +1,66 @@
+    {% extends "BD/default.html" %}
+
+    {% load i18n %}
+    {% load account %}
+    {% load socialaccount %}
+    <a href="{% provider_login_url 'google' %}">Sign in with Google</a>
+
+
+{% block content %}
+
+    <div class="all">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+            class="img-fluid" alt="Phone image">
+        </div>
+
+        <div class="slovo">
+            <h1>{% trans "Авторизация" %}</h1>
+
+                <p>{% blocktrans %}Если у вас нету аккаунта, то вы можете
+                <a href="{{ signup_url }}">Создать</a> его.{% endblocktrans %}</p>
+                <p><a href="{% provider_login_url 'google' %}">Войти через Google</a></p>
+
+
+            <form class="form-all" method="POST" action="{% url 'account_login' %}">
+              {% csrf_token %}
+                 <div class="form-input">
+                     <label class="form-label" for="form1Example13">Имя пользователя</label>
+                     {{ form.login }}
+                 </div>
+                <div class="form-input">
+                    <label class="form-label" for="form1Example23">Пароль</label>
+                    {{ form.password }}
+                    {% if form.errors %}
+                        <p style=" color: red">Неверно введен Логин или Пароль</p>
+                    {% endif %}
+                </div>
+                <p><a href="{% url 'account_reset_password' %}">Забыли пароль?</a> </p>
+              <button class="btn btn-primary btn-lg" type="submit">{% trans "Войти" %}</button>
+            </form>
+        </div>
+    </div>
+    <style>
+        .all{
+            margin-top: 50px;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .form-all input{
+            outline: none;
+            background-color: #fff;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-input {
+            display:flex;
+            flex-direction: column;
+            margin: 10px 0;
+        }
+        .slovo {
+            width: 50%;
+        }
+    </style>
+{% endblock %}
