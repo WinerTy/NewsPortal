@@ -1,10 +1,10 @@
-from .models import Post, Category
+from .models import Post
 from django import forms
 from django.forms import TextInput, Textarea, Select, SelectMultiple
 
 
-class PostForm(forms.ModelForm):
 
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'text', 'type', 'categories']
@@ -19,7 +19,7 @@ class PostForm(forms.ModelForm):
                 'placeholder': 'Содержание поста',
             }),
             "categories": SelectMultiple(attrs={
-                'class': 'form-control',
+                'class': 'form-control custom-select-multiple',
                 'placeholder': 'Категории',
             }),
             "type": Select(attrs={

@@ -290,3 +290,17 @@ _
 /NewsPortal/static/icon/overcast-night-sleet.svg,4\8\4875ca2d71478e8931006c91e2d0b701abcf31dc
 ?
 NewsPortal/.env,a\2\a2da3aef3be7204794c7b09b55ac240922859922
+R
+"NewsPortal/static/js/customform.js,9\e\9e411b8c690c45a1a9fbebb7e5338d75a66840e5
+J
+NewsPortal/log/general.log,a\3\a3f91912412d28068b233bc625ff9d6571609626
+I
+NewsPortal/log/errors.log,e\1\e1bc51930576a15bea01ee1413154876126b8827
+K
+NewsPortal/log/security.log,9\b\9bf222a7517326d6c089593dcaea8f3167e05b3f
+Y
+)NewsPortal/static/icon/overcast-night.svg,0\f\0faa0e6e0db5df51e89b7eced77b5ddca0bb2d91
+R
+"NewsPortal/weather/weather_icon.py,3\2\32af275283d4c0f8c666aa03a9e0b6ab4ae832d7
+W
+'NewsPortal/templates/django.server.html,9\3\93dd366e1afd1a166ee20be14fc6f17e59911393

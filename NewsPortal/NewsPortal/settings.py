@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 from celery.schedules import crontab
-from django.urls import reverse_lazy
+from django.utils.log import RequireDebugFalse
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -69,7 +69,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware'
+    'allauth.account.middleware.AccountMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware'
 ]
 
 ROOT_URLCONF = 'NewsPortal.urls'
@@ -221,7 +222,7 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = os.getenv('Email')
 EMAIL_HOST_PASSWORD = os.getenv('Email_password')
-
+SERVER_EMAIL = os.getenv('Email')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
@@ -250,6 +251,10 @@ CELERY_BEAT_SCHEDULE = {
 }
 
 
+ADMINS = [
+    ('luchi', 'WinerTy@yandex.ru')
+]
+
 # КЭШ
 
 CACHES = {
@@ -262,3 +267,118 @@ CACHES = {
     }
 }
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'console_format':{
+            'format': '[%(asctime)s] - [%(levelname)s] - %(message)s',
+            'datefmt': '%d/%m/%Y %H:%M:%S'
+        },
+        'file_format': {
+            'format': '[%(asctime)s] [%(levelname)s] %(module)s %(message)s',
+            'datefmt': '%d/%m/%Y %H:%M:%S',
+        },
+        'error_format': {
+            'format': '[%(asctime)s] - [%(levelname)s] - %(message)s, path: %(pathname)s, exc_info: %(exc_info)s',
+            'datefmt': '%d/%m/%Y %H:%M:%S',
+
+        },
+        'security_format': {
+            'format': '[%(asctime)s] - [%(levelname)s] - [%(module)s] - %(message)s',
+            'datefmt': '%d/%m/%Y %H:%M:%S',
+
+        },
+    },
+    'handlers': {
+
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console_format'
+        },
+
+        'errors': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'log/errors.log',
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter':'error_format',
+            'level':'ERROR'
+        },
+
+        'general': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'log/general.log',
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'file_format',
+            'level': 'INFO'
+        },
+
+        'security': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'log/security.log',
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'security_format',
+            'level': 'INFO'
+        },
+
+        'mail_admins': {
+            'class': 'django.utils.log.AdminEmailHandler',
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'include_html': True,
+        },
+
+    },
+    'loggers': {
+
+        'django': {
+            'handlers': ['console', 'general'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+
+        'django.request': {
+            'handlers': ['mail_admins', 'errors'],
+            'level': 'ERROR',
+            'propagate': False
+        },
+
+        'django.security': {
+            'handlers': ['security'],
+            'level': 'INFO',
+            'propagate': False
+        },
+
+        'django.server': {
+            'handlers': ['mail_admins', 'errors'],
+            'level': 'ERROR',
+            'propagate': False,
+
+        },
+
+        'django.template': {
+            'handlers': ['console', 'general'],
+            'level': 'DEBUG',
+            'propagate': False,
+
+        },
+
+        'django.db.backends': {
+            'handlers': ['console', 'general'],
+            'level': 'DEBUG',
+            'propagate': False,
+
+        },
+    },
+
+    'filters': {
+        'require_debug_false': {
+            '()': RequireDebugFalse,
+        },
+    },
+}
