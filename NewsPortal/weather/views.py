@@ -7,10 +7,7 @@ from django.shortcuts import render
 from dotenv import load_dotenv
 from .weather_icon import weather_icon_day, weather_icon_night
 
-load_dotenv()
-logger = logging.getLogger('django.request')
 def get_weather(request):
-    logger.info('TEST')
     API = os.getenv('API_KEY')
     input_city = request.GET.get('input_city')
     response = requests.get(f'http://api.weatherapi.com/v1/current.json?key={API}&q={input_city}')
@@ -69,18 +66,10 @@ def get_weather(request):
             info = {
                 'error': 'Произошла ошибка, проверьте правильность написания города!',
             }
-            logger.error("An error occurred in your_view: %s")
-            subject = 'Error occurred in your_view'
-            message = 'Error occurred in your_view'
-            mail_admins(subject, message, fail_silently=False)
-
         except requests.exceptions.ConnectTimeout:
             info = {
                 'error': 'Не удалось обработать ваш запрос, попробуйте еще раз!'
             }
-            subject = 'Error occurred in your_view'
-            message = 'Error occurred in your_view'
-            mail_admins(subject, message, fail_silently=False, from_email=os.getenv('Email'))
         return render(request, 'weather/weather.html', {'info': info})
     else:
         return render(request, 'weather/weather_error.html',)
