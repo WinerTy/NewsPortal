@@ -6,7 +6,10 @@ from .models import Post, PostCategory, Category
 from .forms import PostForm
 
 
+import logging
 
+
+logger = logging.getLogger('django')
 def MainPage(request):
     return render(request, 'BD/MainPage.html', {'title': 'Главная страница'})
 
@@ -90,6 +93,7 @@ class FindPost():
 
 class CreatePost():
     def create(request):
+        logger.info('django')
         if request.method == 'POST':
             form = PostForm(request.POST)
             if form.is_valid():

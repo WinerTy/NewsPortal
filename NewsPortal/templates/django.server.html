@@ -1,0 +1,9 @@
+{% autoescape off %}
+
+{% load log %}{% if record.exc_info %}
+
+{% exception_as_html %}
+
+{% endif %}
+
+{% endautoescape %}
